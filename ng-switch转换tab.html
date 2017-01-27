@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
+  <script type="text/javascript">
+    var DemoCtrl = function($scope){
+      $scope.ShowMode = "list";
+
+      $scope.ChangeShow = function(ShowMode){
+        $scope.ShowMode = ShowMode;
+      }
+    };
+  </script>
+</head>
+<body ng-controller="DemoCtrl" ng-switch="ShowMode">
+  <div class="well span6" ng-switch-when="list">
+    我是列表區塊
+  </div>
+  <div class="well span6" ng-switch-when="add">
+    我是新增區塊
+  </div>
+  <div class="well span6" ng-switch-when="edit">
+    我是修改區塊
+  </div>
+  <div class="well span6" ng-switch-when="detail">
+    我是明細區塊
+  </div>
+  <div class="well span6" style="float:none;">
+  <button ng-click="ChangeShow('list')">switch to list</button>
+  <button ng-click="ChangeShow('add')">switch to add</button>
+  <button ng-click="ChangeShow('edit')">switch to edit</button>
+  <button ng-click="ChangeShow('detail')">switch to detail</button>
+  <br/>
+  </div>
+</body>
+</html>

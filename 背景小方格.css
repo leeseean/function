@@ -1,0 +1,7 @@
+body{
+  height: 100vh;
+  background-image: linear-gradient(transparent 90%, #CCC 90%), 
+            linear-gradient(to right, transparent 90%, #CCC 90%);
+  background-size: 2% 2%;
+  background-repeat: repeat;
+}

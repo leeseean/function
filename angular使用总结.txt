@@ -1,0 +1,8 @@
+1，用ul li模拟下拉框，可以用ng-mouseleave实现鼠标离开下拉框消失。
+2，$timeout 服务是 ng 对 window.setTimeout() 的封装，它使用 promise 统一了计时器的回调行为：
+  var TestCtrl = function($timeout){
+    var p = $timeout(function(){console.log('haha')}, 5000);
+    p.then(function(){console.log('x')});
+    //$timeout.cancel(p);
+  }
+使用 $timeout.cancel() 可以取消计时器。

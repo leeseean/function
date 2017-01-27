@@ -1,0 +1,65 @@
+.tab_default{
+ border-bottom:solid 1px #F2F2F2;
+ padding:6px 0;
+}
+.tab_select{
+ border-bottom:solid 1px #3E89F5;
+ box-shadow:0 -3px 8px #C1D3F0 inset;
+}
+.arrow-top {
+ position: absolute;
+ width: 0;
+ height: 0;
+ top:20px;
+ border: 6px solid #3E89F5;
+ border-right-color:transparent;
+ border-left-color: transparent;
+ border-top-color: transparent;
+}
+.arrow-top:after {
+ content:'';
+ position:absolute;
+ width: 0;
+ height: 0;
+ border: 12px solid #fff;
+ right: -12px;
+ bottom: -13px;
+ border-right-color:transparent;
+ border-left-color: transparent;
+ border-top-color: transparent;
+}
+
+<ion-view view-title="滑动tab">
+ <ion-content has-bouncing="false">
+ <div style="display:flex;width:100%;">
+  <div style="flex:1;text-align: center;" class="tab_default" ng-repeat="d in tabNames" ng-click="activeSlide($index)" ng-class="slectIndex==$index ? 'tab_select' : '' ">
+   {{d}}
+   <div class="arrow-top" style="left:{{15+$index*33}}%" ng-show="slectIndex==$index"></div>
+  </div>
+ </div>
+ <ion-slide-box on-slide-changed="slideChanged(index)" active-slide="slideIndex" does-continue="false" show-pager="false">
+  <ion-slide ng-repeat="p in pages">
+   <div ng-include="p"></div>
+  </ion-slide>
+ </ion-slide-box>
+ </ion-content>
+</ion-view>
+
+$scope.tabNames=['java','html5','android'];
+$scope.slectIndex=0;
+$scope.activeSlide=function(index){//点击时候触发
+ $scope.slectIndex=index;
+ $ionicSlideBoxDelegate.slide(index);
+};
+$scope.slideChanged=function(index){//滑动时候触发
+ $scope.slectIndex=index;
+};
+$scope.pages=["templates/tab01.html","templates/tab02.html","templates/tab03.html"];
+
+tab01.html、tab02.html、tab03.html这几个都是差不多的，贴一个tab01的：
+<div style="width:100%;text-align: center;padding-top:30px;">
+ page 01
+ <p style="margin-top:30px;">
+  <img src="img/tab01.jpg" style="width:100%;"/>
+ </p>
+</div>
